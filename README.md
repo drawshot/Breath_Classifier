@@ -16,11 +16,13 @@ sample_frequency, signalData = wavfile.read('breath_data/breath_' + str(i)+ '.wa
 sample_frequency, signalData = wavfile.read('breath_data/breath_' + str(i)+ '.wav')
 ```
 
-3. 피크 속성을 기준으로 피크점 찾기
-인접 피크 사이의 샘플에서 필요한 최소 수평 거리 속성 
+3. 피크 속성을 기준으로 피크점 찾기, 
+인접 피크 사이의 샘플에서 필요한 최소 수평 거리 속성 사용
 ```python
 from scipy.signal import find_peaks
 max = np.max(rolling_mean[samplerate * 1:samplerate * 60])
 max = int(max)
 peaks2, properties = find_peaks(rolling_mean, distance=samplerate, prominence=(mean / 7, max))    
 ```
+<br />
+<img width="583" alt="스크린샷 2019-10-21 오후 1 31 01" src="https://user-images.githubusercontent.com/26424846/67176920-12457100-f407-11e9-9407-3097be46cbc2.png">
